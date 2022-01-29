@@ -12,7 +12,7 @@ namespace DAL.Seeders
 {
     public class FileSeeder
     {
-        private HttpClient _client;
+        private readonly HttpClient _client;
         private readonly ApplicationContext _applicationContext;
         public FileSeeder(ApplicationContext applicationContext)
         {

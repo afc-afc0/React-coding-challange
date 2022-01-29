@@ -9,6 +9,6 @@ namespace DAL.Interfaces
 {
     public interface IFileRepository : IGenericRepository<File>
     {
-        Task<IEnumerable<File>> GetRandomImageFiles(int count); 
+        List<File> GetRandomImageFiles(int count); 
     }
 }

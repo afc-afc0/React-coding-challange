@@ -3,8 +3,6 @@ using Infastructure.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
@@ -12,9 +10,18 @@ namespace DAL.Repositories
     {
         public FileRepository(ApplicationContext context) : base(context) { }
 
-        public Task<IEnumerable<File>> GetRandomImageFiles(int count)
+        public List<File> GetRandomImageFiles(int count)
         {
-            throw new NotImplementedException();
+            Random rand = new Random();
+            IReadOnlyList<File> files = _context.Files.ToList();
+
+            List<File> randomImageFiles = new List<File>();
+            for (int i = 0; i < count; i++)
+            {
+                int randomIndex = rand.Next(0, files.Count);
+                randomImageFiles.Add(files[randomIndex]);
+            }
+            return randomImageFiles;
         }
     }
 }

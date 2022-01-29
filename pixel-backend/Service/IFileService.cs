@@ -9,5 +9,6 @@ namespace Service
     public interface IFileService
     {
         Task<File> GetFileById(int id);
+        IReadOnlyList<File> GetRandomImageFiles(int count);
     }
 }
