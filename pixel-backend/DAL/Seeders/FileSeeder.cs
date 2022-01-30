@@ -1,5 +1,6 @@
 ﻿using Infastructure.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,44 +15,44 @@ namespace DAL.Seeders
     {
         private readonly HttpClient _client;
         private readonly ApplicationContext _applicationContext;
-        public FileSeeder(ApplicationContext applicationContext)
+        private readonly string _apiKey;
+        public FileSeeder(ApplicationContext applicationContext, IConfiguration configuration)
         {
             _applicationContext = applicationContext;
             _client = new HttpClient();
+            _apiKey = configuration["unsplashApiKey"];
         }
 
         public async Task Seed()
         {
-            if (!await _applicationContext.Files.AnyAsync())
+            try
             {
-                try
-                {
-                    var response = await _client.GetAsync("https://api.unsplash.com/photos/random/?client_id=8jiK3ovEU6v2suI9-dEobshU0nZztk60N_6PHQPEa6c&count=30");
-                    response.EnsureSuccessStatusCode();
-                    List<Image> images = await response.Content.ReadFromJsonAsync<List<Image>>();
+                Console.WriteLine("Seeding Database");
+                var response = await _client.GetAsync($"https://api.unsplash.com/photos/random/?client_id={_apiKey}&count=30");
+                response.EnsureSuccessStatusCode();
+                List<Image> images = await response.Content.ReadFromJsonAsync<List<Image>>();
 
-                    List<File> files = new List<File>();
-                    foreach (Image image in images)
+                List<File> files = new List<File>();
+                foreach (Image image in images)
+                {
+                    File file = new File()
                     {
-                        File file = new File()
-                        {
-                            Name = image.Id,
-                            RawImageUrl = image.Urls.Raw,
-                            Likes = image.Likes,
-                            Views = image.Views
-                        };
+                        Name = image.Id,
+                        RawImageUrl = image.Urls.Raw,
+                        Likes = image.Likes,
+                        Views = image.Views
+                    };
 
-                        files.Add(file);
-                    }
+                    files.Add(file);
+                }
 
-                    await _applicationContext.AddRangeAsync(files);
-                    await _applicationContext.SaveChangesAsync();
-                }
-                catch (HttpRequestException e)
-                {
-                    Console.WriteLine("\nException Caught!");
-                    Console.WriteLine("Message :{0} ", e.Message);
-                }
+                await _applicationContext.AddRangeAsync(files);
+                await _applicationContext.SaveChangesAsync();
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :{0} ", e.Message);
             }
         }
 
