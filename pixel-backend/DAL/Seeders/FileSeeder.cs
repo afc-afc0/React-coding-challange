@@ -38,9 +38,13 @@ namespace DAL.Seeders
                     File file = new File()
                     {
                         Name = image.Id,
+                        Width = image.Width,
+                        Height = image.Height,
                         RawImageUrl = image.Urls.Raw,
+                        RegularImageUrl = image.Urls.Regular,
+                        ThumbImageUrl = image.Urls.Thumb,
                         Likes = image.Likes,
-                        Views = image.Views
+                        Views = image.Views,
                     };
 
                     files.Add(file);
@@ -62,11 +66,15 @@ namespace DAL.Seeders
             public Urls Urls { get; set; }
             public long Likes { get; set; }
             public long Views { get; set; }
+            public int Width { get; set; }
+            public int Height { get; set; }
         }
 
         private class Urls
         {
             public string Raw { get; set; }
+            public string Regular { get; set; }
+            public string Thumb { get; set; }
         }
     }
 }

@@ -15,8 +15,18 @@ namespace Infastructure.Entities
         [StringLength(200)]
         public string RawImageUrl { get; set; }
         [Required]
+        [StringLength(200)]
+        public string RegularImageUrl { get; set; }
+        [Required]
+        [StringLength(200)]
+        public string ThumbImageUrl { get; set; }
+        [Required]
         public long Views { get; set; }
         [Required]
         public long Likes { get; set; }
+        [Required]
+        public int Height { get; set; }
+        [Required]
+        public int Width { get; set; }
     }
 }

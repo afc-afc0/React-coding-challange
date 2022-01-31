@@ -46,5 +46,3 @@ C:\Users\ahmet\Desktop\Project For TechGuilds\Pixel\React-coding-challange\pixel
 C:\Users\ahmet\Desktop\Project For TechGuilds\Pixel\React-coding-challange\pixel-backend\pixel-backend\bin\Debug\net5.0\Infastructure.pdb
 C:\Users\ahmet\Desktop\Project For TechGuilds\Pixel\React-coding-challange\pixel-backend\pixel-backend\bin\Debug\net5.0\DAL.dll
 C:\Users\ahmet\Desktop\Project For TechGuilds\Pixel\React-coding-challange\pixel-backend\pixel-backend\bin\Debug\net5.0\DAL.pdb
-C:\Users\ahmet\Desktop\Project For TechGuilds\Pixel\React-coding-challange\pixel-backend\pixel-backend\bin\Debug\net5.0\Service.dll
-C:\Users\ahmet\Desktop\Project For TechGuilds\Pixel\React-coding-challange\pixel-backend\pixel-backend\bin\Debug\net5.0\Service.pdb

@@ -1,4 +1,5 @@
 ﻿using Infastructure.Entities;
+using pixel_backend.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Service
 {
     public interface IFileService
     {
-        Task<File> GetFileById(int id);
-        IReadOnlyList<File> GetRandomImageFiles(int count);
+        Task<FileDTO> GetFileById(int id);
+        IReadOnlyList<FileDTO> GetRandomImageFiles(int count);
     }
 }

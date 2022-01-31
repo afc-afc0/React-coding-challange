@@ -8,7 +8,9 @@ namespace pixel_backend.AutoMappers
     {
         public FileProfile()
         {
-            CreateMap<File, FileDTO>();
+            CreateMap<File, FileDTO>()
+                .ForMember(dest => dest.Src,
+                           opts => opts.MapFrom(src => src.RegularImageUrl));
         }
     }
 }

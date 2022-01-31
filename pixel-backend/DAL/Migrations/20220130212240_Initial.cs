@@ -15,8 +15,12 @@ namespace DAL.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     RawImageUrl = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    RegularImageUrl = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    ThumbImageUrl = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     Views = table.Column<long>(type: "bigint", nullable: false),
-                    Likes = table.Column<long>(type: "bigint", nullable: false)
+                    Likes = table.Column<long>(type: "bigint", nullable: false),
+                    Height = table.Column<int>(type: "integer", nullable: false),
+                    Width = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,16 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import axios from 'axios'
+import ImageList from '../components/ImageList'
 
 export default function Home() {
-  const[images, setImages] = useState([]);
-
-  axios.get(`https://localhost:5001/api/file/random?count=5`)
-  .then(({data}) => {
-    const newFImages = [];
-    
-  })
 
   return (
     <div className={styles.container}>
@@ -20,12 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <div>Hi</div>
-      </main>
-
-
-
+      <ImageList/>
 
       <footer className={styles.footer}>
         <a
