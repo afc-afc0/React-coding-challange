@@ -14,8 +14,8 @@ You can go to localhost:5050 to connect the database. Connection information is 
 dotnet ef database update
 ```
 
-3) Run the server:
+3) Run the server and seed the database:
 
 ```bash
-dotnet run
+dotnet run seed=true
 ```
