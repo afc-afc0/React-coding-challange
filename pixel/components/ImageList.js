@@ -54,8 +54,8 @@ const ImageList = () => {
           // Pause observe when loading the data 
           unobserve();
           // Load more data
-          console.log("loading more data");
           await loadImages();
+          // Start observing again
           observe();
       },
   });
